@@ -12,7 +12,7 @@ app.post('/usuarios', async (req, res) => {
         data: {
             email: req.body.email,
             name: req.body.name,
-            age: req.body.age,
+            age: parseInt(req.body.age),
         }
     })
     res.status(201).json(user) // Retorna o usuário criado com o ID do banco
@@ -24,7 +24,7 @@ app.get('/usuarios', async (req, res) => {
         where: {
             name: req.query.name,
             email: req.query.email,
-            age: req.query.age,
+            age: req.query.age ? parseInt(req.query.age) : undefined,
         }
     })
 
@@ -40,7 +40,7 @@ app.put('/usuarios/:id', async (req, res) => {
         data: {
             email: req.body.email,
             name: req.body.name,
-            age: req.body.age,
+            age: parseInt(req.body.age),
         }
     })
 
